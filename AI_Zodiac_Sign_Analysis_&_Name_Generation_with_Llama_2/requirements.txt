@@ -1,0 +1,7 @@
+streamlit
+pandas
+textblob
+altair
+vaderSentiment
+ollama
+names

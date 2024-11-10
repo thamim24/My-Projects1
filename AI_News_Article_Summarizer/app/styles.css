@@ -1,0 +1,186 @@
+/* Global Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f7fafc;
+  color: #1a202c;
+}
+
+.stApp {
+  
+  padding: 2rem;
+}
+
+/* Header Styles */
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  color: #2c5282;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: 700;
+  color: #2b6cb0;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  border-bottom: 2px solid #4299e1;
+  padding-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+  color: #2c5282;
+}
+
+/* Input Styles */
+.stTextInput > div > div > input,
+.stTextArea > div > div > textarea,
+.stSelectbox > div > div > div {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  padding: 0.625rem;
+  font-size: 1rem;
+  color: #1a202c;
+  transition: all 0.3s ease;
+}
+
+.stTextInput > div > div > input:focus,
+.stTextArea > div > div > textarea:focus,
+.stSelectbox > div > div > div:focus {
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+/* Radio and Checkbox Styles */
+.stRadio > label,
+.stCheckbox > label {
+  font-weight: 500;
+  color: #2c5282;
+}
+
+/* Slider Styles */
+.stSlider > div > div > div > div {
+  background-color: #4299e1;
+}
+
+.stSlider > div > div > div > div > div {
+  background-color: #2b6cb0;
+}
+
+/* Button Styles */
+.stButton > button {
+  background-color: #4299e1;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.stButton > button:hover {
+  background-color: #2b6cb0;
+  box-shadow: 0 4px 6px rgba(66, 153, 225, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Result Styles */
+
+
+/* Warning and Error Styles */
+.stWarning, .stError {
+  background-color: #fff5f5;
+  border-left: 4px solid #fc8181;
+  padding: 1rem;
+  border-radius: 0.375rem;
+  margin-top: 1rem;
+  color: #c53030;
+}
+
+/* Sidebar Styles */
+[data-testid="stSidebar"] {
+  background-color: #02242d;
+  padding: 2rem 1rem;
+}
+
+[data-testid="stSidebar"] .stMarkdown {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* Navigation Styles */
+[data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
+  padding-top: 2rem;
+  
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] {
+  margin-top: 1rem;
+}
+
+[data-testid="stSidebar"] [role="radio"] {
+  background-color: #212d02;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+[data-testid="stSidebar"] [role="radio"]:hover {
+  background-color: #2b6cb0;
+}
+
+[data-testid="stSidebar"] [role="radio"][aria-checked="true"] {
+  background-color: #1a4971;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar Title */
+[data-testid="stSidebar"] .stMarkdown h1 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .stApp {
+      padding: 1rem;
+  }
+
+  h1 {
+      font-size: 2rem;
+  }
+
+  
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4299e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2b6cb0;
+}
