@@ -1,0 +1,31 @@
+<!-- templates/trip/trips.html -->
+{% extends "base.html" %}
+{% block title %}My Trips{% endblock %}
+
+{% block content %}
+<div class="my-trips">
+    <h1>My Trips</h1>
+    
+    {% if trips %}
+        <div class="trips-row">
+            {% for trip in trips %}
+            <div class="trip-card">
+                <h3>{{ trip.destination }}</h3>
+                <p>From: {{ trip.start_location }}</p>
+                <p>{{ trip.start_date.strftime('%d %b %Y') }} - {{ trip.end_date.strftime('%d %b %Y') }}</p>
+                <p class="budget">Budget: {{ trip.budget_currency }} {{ "%.2f"|format(trip.budget_amount) }}</p>
+                <div class="trip-actions">
+                    <button class="btn-view" onclick="viewTrip({{ trip.id }})">View Details</button>
+                    <a href="{{ url_for('trip.download_pdf', trip_id=trip.id) }}" class="btn-download">Download PDF</a>
+                    <div id="tripDetails" class="hidden"></div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-trips">You haven't planned any trips yet. <a href="{{ url_for('trip.plan') }}">Plan your first trip!</a></p>
+    {% endif %}
+</div>
+
+{% endblock %}

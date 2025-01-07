@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="hero-content">
+        <h1>Plan Your Dream Trip with AI</h1>
+        <p>Let our intelligent travel planner create personalized itineraries based on your preferences and budget</p>
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('trip.plan') }}" class="btn-primary">Start Planning</a>
+        {% else %}
+            <a href="{{ url_for('auth.login') }}" class="btn-primary">Get Started</a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="container">
+    <div class="features-section">
+        <div class="feature-box">
+            <div class="feature-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h3>Smart Planning</h3>
+            <p>Our AI analyzes thousands of travel options to create the perfect itinerary for you</p>
+        </div>
+        
+        <div class="feature-box">
+            <div class="feature-icon">
+                <i class="fas fa-wallet"></i>
+            </div>
+            <h3>Budget Friendly</h3>
+            <p>Set your budget and let us plan the best possible trip within your means</p>
+        </div>
+        
+        <div class="feature-box">
+            <div class="feature-icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3>Local Insights</h3>
+            <p>Get recommendations for hidden gems and local favorites at your destination</p>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h2>Ready to Start Your Journey?</h2>
+        <p>Join thousands of happy travelers who have planned their perfect trips with TripAI</p>
+        {% if not current_user.is_authenticated %}
+            <a href="{{ url_for('auth.register') }}" class="btn-primary">Sign Up Now</a>
+        {% elif  current_user.is_authenticated%}
+            <a href="{{ url_for('trip.plan') }}" class="btn-primary">Start your Journey</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+.hero-section {
+    background: linear-gradient(rgba(26, 35, 126, 0.7), rgba(13, 71, 161, 0.7)), url('/static/img/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 6rem 2rem;
+    margin-bottom: 3rem;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.hero-content .btn-primary {
+    display: inline-block;
+    margin-top: 0;
+    width: auto;
+    padding: 1rem 2rem;
+    text-decoration: none;
+}
+
+.features-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 4rem 0;
+}
+
+.feature-box {
+    text-align: center;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+}
+
+.feature-box h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.cta-section {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    margin: 4rem 0;
+}
+
+.cta-section .btn-primary {
+    display: inline-block;
+    margin-top: 0;
+    width: auto;
+    padding: 1rem 2rem;
+    text-decoration: none;
+}
+
+.cta-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.cta-section p {
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 4rem 1rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .features-section {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+{% endblock %}
