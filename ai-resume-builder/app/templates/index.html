@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="animated-section">AI Resume Builder & Career Advisor</h1>
+
+    <section class="section animated-section">
+        <p>Elevate your professional journey with our AI-powered tools. Create a standout resume and get personalized career guidance tailored to your unique skills and aspirations.</p>
+
+        <br>
+        <div class="feature-grid">
+            <div class="feature" style="--index: 1">
+                <h3>Smart Resume Builder</h3>
+                <p>Craft a professional resume that highlights your strengths and catches recruiters' attention using advanced AI technology.</p><br>
+                <a href="{{ url_for('main.resume_builder') }}" class="btn">Build Your Resume</a>
+            </div>
+
+            <div class="feature" style="--index: 2">
+                <h3>Personalized Career Advice</h3>
+                <p>Receive targeted career recommendations based on your skills, experience, and industry trends.</p><br>
+                <a href="{{ url_for('main.career_advice') }}" class="btn">Get Career Insights</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section benefits animated-section">
+        <h3>Why Use Our Platform?</h3>
+        <ul>
+            <li style="--index: 1">AI-powered resume optimization</li>
+            <li style="--index: 2">Personalized career path recommendations</li>
+            <li style="--index: 3">Industry-specific insights</li>
+            <li style="--index: 4">Free professional evaluation</li>
+        </ul>
+    </section>
+</div>
+{% endblock %}

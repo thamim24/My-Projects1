@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResumeAI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="container">
+    <div class="logo">ResumeAI</div>
+    <ul>
+        <li><a href="{{ url_for('main.index') }}">Home</a></li>
+        <li><a href="{{ url_for('main.resume_builder') }}">Resume Builder</a></li>
+        <li><a href="{{ url_for('main.career_advice') }}">Career Advice</a></li>
+        
+        {% if current_user.is_authenticated %}
+        <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+        {% else %}
+        <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+        <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+        {% endif %}
+    </ul>
+</nav>
+    </header>
+
+    <main role="main" class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        © 2024 / Thamimul Ansari M & Mohammed Faisar A
+        <br>Team ID - 121
+    </footer>
+
+    <script>
+        // Add index-based animations for sequential elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const features = document.querySelectorAll('.feature');
+            const benefits = document.querySelectorAll('.benefits li');
+            
+            features.forEach((feature, index) => {
+                feature.style.setProperty('--index', index + 1);
+            });
+            
+            benefits.forEach((benefit, index) => {
+                benefit.style.setProperty('--index', index + 1);
+            });
+        });
+    </script>
+</body>
+</html>

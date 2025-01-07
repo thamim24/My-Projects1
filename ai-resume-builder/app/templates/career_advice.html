@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="animated-section">Career Guidance & Path Exploration</h1>
+
+    <section class="section advice-form animated-section">
+        <h2>Get Personalized Career Advice</h2>
+        
+        <form method="GET">
+            <div class="form-group">
+                <label for="skills">Enter Your Professional Skills</label>
+                <input type="text" name="skills" class="form-control" placeholder="List your professional skills">
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">Discover Career Path</button>
+            </div>
+        </form>
+    </section>
+
+    {% if advice %}
+    <section class="section resume-result animated-section">
+        <h2>Tailored Career Advice</h2>
+        <div id="career-advice">
+            {{ advice | safe }}
+        </div>
+
+        <br>
+        {% if career_path %}
+        <div class="potential-path">
+            <h2>Potential Career Trajectory</h2>
+            <ol>
+                {% for step in career_path %}
+                <p>{{ step }}</p>
+                {% endfor %}
+            </ol>
+        </div>
+        {% endif %}
+    </section>
+    {% endif %}
+</div>
+{% endblock %}

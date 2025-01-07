@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 id="professional-resume-builder" class="animated-section">Professional Resume Builder</h1>
+
+    <form method="POST" class="resume-form">
+        {{ form.hidden_tag() }}
+
+        <div class="section form-section personal-info animated-section">
+            <h2>Personal Information</h2>
+            
+            <div class="form-group">
+                {{ form.name.label }}
+                {{ form.name(class="form-control", placeholder="Enter your full name") }}
+            </div>
+
+            <div class="form-group">
+                {{ form.email.label }}
+                {{ form.email(class="form-control", placeholder="Enter your professional email") }}
+            </div>
+
+            <div class="form-group">
+                {{ form.phone.label }}
+                {{ form.phone(class="form-control", placeholder="Enter your contact number") }}
+            </div>
+        </div>
+
+        <div class="section form-section professional-summary animated-section">
+            <h2>Professional Summary</h2>
+            <div class="form-group">
+                {{ form.summary.label }}
+                {{ form.summary(class="form-control", placeholder="Write a concise overview of your professional profile") }}
+            </div>
+        </div>
+
+        <div class="section form-section experience animated-section">
+            <h2>Work Experience</h2>
+            <div class="form-group">
+                {{ form.experience.label }}
+                {{ form.experience(class="form-control") }}
+            </div>
+        </div>
+
+        <div class="section form-section education animated-section">
+            <h2>Education</h2>
+            <div class="form-group">
+                {{ form.education.label }}
+                {{ form.education(class="form-control", placeholder="List your educational background, degrees, and relevant certifications") }}
+            </div>
+            <div class="form-group">
+                {{ form.institute_name.label }}
+                {{ form.institute_name(class="form-control", placeholder="Enter the name of your educational institution") }}
+            </div>
+        </div>
+
+        <div class="section form-section skills animated-section">
+            <h2>Skills</h2>
+            <div class="form-group">
+                {{ form.skills.label }}
+                {{ form.skills(class="form-control", placeholder="List your professional skills, separated by commas") }}
+            </div>
+        </div>
+
+        <div class="section form-section industry animated-section">
+            <h2>Industry</h2>
+            <div class="form-group industry-radio-group">
+                {% for subfield in form.industry %}
+                <label class="industry-radio">
+                    {{ subfield }} {{ subfield.label.text }}
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn">Generate Resume</button>
+        </div>
+    </form>
+
+    <br>
+    {% if resume %}
+    <div class="section resume-result animated-section">
+        <h2>Generated Resume</h2>
+        
+        <div id="resume-content" class="resume-content">
+            {{ resume | safe }}
+        </div>
+
+        <div class="resume-analysis">
+            <h3>Resume Score: <span id="resume-score" style="--score-percentage: {{ score }}%">{{ score }}</span></h3>
+
+            <h3>Improvement Suggestions:</h3>
+            <ul style="margin-left:50px;">
+                {% for suggestion in suggestions %}
+                <li>{{ suggestion }}</li>
+                {% endfor %}
+            </ul>
+
+            <br>
+            <h3>Industry Keywords:</h3>
+            <ul style="margin-left:50px;">
+                {% for keyword in keywords %}
+                <li>{{ keyword }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+.industry-radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.industry-radio {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+.industry-radio input {
+    margin-right: 5px;
+}
+</style>
+{% endblock %}

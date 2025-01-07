@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container login-container">
+    <div class="form-wrapper">
+        <h1>Login</h1>
+        <form method="POST" action="{{ url_for('auth.login') }}">
+            {{ form.hidden_tag() }}
+            
+            <div class="form-group">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control", placeholder="Enter your email") }}
+            </div>
+            
+            <div class="form-group">
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(class="form-control", placeholder="Enter your password") }}
+            </div>
+            
+            {{ form.submit(class="btn btn-primary") }}
+        </form>
+        
+        <div class="form-footer">
+            <p>Don't have an account? <a href="{{ url_for('auth.register') }}" class="auth-link">Register here</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
